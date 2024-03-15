@@ -2,24 +2,21 @@ import React from "react"; // Ensure you import React
 import "./Register.css";
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Register() {
   const register = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const auth = getAuth();
-
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        
         const user = userCredential.user;
-        console.log(user); 
+        console.log(user);
       })
       .catch((error) => {
-        // Handle errors 
+        // Handle errors
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error("Error code:", errorCode, "Error Message:", errorMessage);
