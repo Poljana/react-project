@@ -1,6 +1,7 @@
 import React from "react"; // Ensure you import React
 import "./Register.css";
 import { Link } from "react-router-dom";
+import { auth } from "../../firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Register() {
