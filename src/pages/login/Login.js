@@ -1,9 +1,25 @@
 import "./Login.css";
 import { Link } from "react-router-dom";
+import { auth } from "../../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login() {
   
-  
+  const signIn = (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      const user = userCredential.user;
+      console.log(user);
+    }).catch((error) => { 
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error("Error code:", errorCode, "Error Message:", errorMessage);
+    });
+  }
+
   return (
     <>
       <form>
