@@ -8,7 +8,7 @@ export default function Login() {
         <h3>Sign in</h3>
         <input type="text" placeholder="Email" />
         <input type="password" placeholder="Password" />
-        <button type="submit">Sign in</button>
+        <button type="submit" /* onClick={signIn()} */>Sign in</button>
         <div className="register-btn-div">
           <p>Don't have an account?</p>
           <Link to="/register"><p className="reg-btn">Register</p></Link>
