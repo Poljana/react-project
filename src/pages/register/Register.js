@@ -1,10 +1,13 @@
-import React from "react"; // Ensure you import React
+import { React, useState } from "react"; // Ensure you import React
 import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Register() {
+  const [displayFlex, setDisplayFlex] = useState(false);
+  const navigate = useNavigate();
+  
   const register = (e) => {
     e.preventDefault();
 
@@ -14,12 +17,18 @@ export default function Register() {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        navigate('/home');
       })
       .catch((error) => {
         // Handle errors
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error("Error code:", errorCode, "Error Message:", errorMessage);
+        setDisplayFlex(true);
+        document.getElementById("password").value = null;
+        setTimeout(() => {
+          setDisplayFlex(false);
+        }, 15000);
       });
   };
 
@@ -29,7 +38,13 @@ export default function Register() {
         <h3>Register</h3>
         <input id="email" type="text" placeholder="Email" />
         <input id="password" type="password" placeholder="Password" />
-        <button type="submit">Sign up</button>
+        <p 
+          className="credentials-input-error"
+          style={{ display: displayFlex ? "flex" : "none" }}
+        >
+          Invalid email or password input
+        </p>
+        <button type="submit" onClick={ register }>Sign up</button>
         <div className="signin-btn-div">
           <p>Already have an account?</p>
           <Link to="/login">

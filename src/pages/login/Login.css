@@ -30,6 +30,7 @@ input
     padding: 0rem 1rem;
     background-color: #444444;
     color: #fff;
+    z-index: 2;
 }
 
 input:hover
@@ -56,4 +57,18 @@ input::placeholder
 .reg-btn:hover
 {
     text-decoration: underline;
+}
+
+.credentials-input-error
+{
+    height: 3.5rem;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    justify-content: center;
+    align-items: end;
+    padding-bottom: 0.5rem;
+    color: #fff;
+    background: #ff0000;
+    transform: translateY(-3rem);
+    margin-bottom: -3rem;
 }
