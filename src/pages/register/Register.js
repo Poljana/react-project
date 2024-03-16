@@ -17,7 +17,7 @@ export default function Register() {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        navigate('/home');
+        navigate('/login');
       })
       .catch((error) => {
         // Handle errors
@@ -34,7 +34,7 @@ export default function Register() {
 
   return (
     <>
-      <form onSubmit={register}>
+      <form onSubmit={ register }>
         <h3>Register</h3>
         <input id="email" type="text" placeholder="Email" />
         <input id="password" type="password" placeholder="Password" />
@@ -44,7 +44,7 @@ export default function Register() {
         >
           Invalid email or password input
         </p>
-        <button type="submit" onClick={ register }>Sign up</button>
+        <button type="submit">Sign up</button>
         <div className="signin-btn-div">
           <p>Already have an account?</p>
           <Link to="/login">

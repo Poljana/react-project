@@ -33,7 +33,7 @@ export default function Login() {
 
   return (
     <>
-      <form>
+      <form onSubmit={ signIn }>
         <h3>Sign in</h3>
         <input id="email" type="text" placeholder="Email" />
         <input id="password" type="password" placeholder="Password" />
@@ -43,7 +43,7 @@ export default function Login() {
         >
           Invalid email or password input
         </p>
-        <button type="submit" onClick={signIn} >Sign in</button>
+        <button type="submit">Sign in</button>
         <div className="register-btn-div">
           <p>Don't have an account?</p>
           <Link to="/register">
