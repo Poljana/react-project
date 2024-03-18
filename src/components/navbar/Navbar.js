@@ -21,6 +21,7 @@ function Navbar() {
     transition: 'top 100ms ease-in-out'
   };
 
+  //Login button changes colour for a short period
   function inverted() {
     setInvertion(!invertion);
 
@@ -29,6 +30,7 @@ function Navbar() {
     }, 150);
   }
 
+  //Sets display on for the dropdown menu
   const changeDisplay = () => {
     if (displayFlex) {
       setDisplayFlex(false);
@@ -89,7 +91,11 @@ function Navbar() {
       }
       <ul style={ displayFlex ? displayFlexTrue : displayFlexFalse }>
         <li>
-          <button id="sign-out" type="button" onClick={ handleSignOut }>
+          <button 
+            id="sign-out" 
+            type="button" 
+            onClick={ handleSignOut }
+          >
             Sign out
           </button>
         </li>

@@ -4,7 +4,8 @@ import Navbar from "../navbar/Navbar.js";
 import Home from "../../pages/home/Home.js";
 import Login from "../../pages/login/Login.js";
 import Register from "../../pages/register/Register.js";
-
+import VerificationEmail
+  from "../../pages/verification_email/VerificationEmail.js";
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/verification-email" element={<VerificationEmail />} />
         </Routes>
       </div>
     </>

@@ -2,7 +2,7 @@ import { React, useState } from "react"; // Ensure you import React
 import "./Register.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 
 export default function Register() {
   const [displayFlex, setDisplayFlex] = useState(false);
@@ -15,9 +15,7 @@ export default function Register() {
     const password = document.getElementById("password").value;
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        navigate('/login');
+        verificationEmail();
       })
       .catch((error) => {
         // Handle errors
@@ -30,7 +28,19 @@ export default function Register() {
           setDisplayFlex(false);
         }, 15000);
       });
+    
   };
+
+  //verification email 
+  const verificationEmail = async () => {
+    try  {
+      await sendEmailVerification(auth.currentUser);
+      navigate('/verification-email');
+    } catch (error) {
+      console.error("Verification email error: ", error);
+    }
+  };
+
 
   return (
     <>
